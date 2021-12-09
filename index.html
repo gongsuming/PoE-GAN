@@ -273,7 +273,7 @@
     <div class="container" style="max-width: 768px;">
         <h5 class="text-center">Summary Video</h5>
         <div class="embed-responsive embed-responsive-16by9" style="margin: 0;">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/8Ebei5QdOuM" allowfullscreen></iframe>
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/56aA_FaeAPY" allowfullscreen></iframe>
         </div>
 
         <!-- Generator Architecture -->
@@ -288,7 +288,7 @@
                     The set of images that satisfies all constraints is the intersection of the sets each of which satisfies one individual constraint.
                     As illustrated in the figure below, we model this by assuming that the jointly conditioned probability distribution is proportional to the product of singly conditioned probability distributions.
                     Under this setting, for the product distribution to have a high density in a region, each of the individual distributions needs to have a high density in that region, thereby satisfying each constraint.
-                    This idea has also been previously referred to as <a href='https://www.cs.toronto.edu/~hinton/absps/icann-99.pdf' target='_blank'>product-of-experts</a>.
+                    This has also been previously referred to as <a href='https://www.cs.toronto.edu/~hinton/absps/icann-99.pdf' target='_blank'>product-of-experts</a>.
                 </p>
                 <div class="row justify-content-center">
                     <img src="images/sets.jpg" style="height: 150px;margin-bottom: 8px;">
@@ -302,12 +302,27 @@
         <div class="row">
             <div class="col-md-12">
                 <hr style="max-width: 768px;">
-                <h5 class="text-center">Generator Architecture</h5>
+                <h5 class="text-center">Generator Design</h5>
                 <p> The figure below shows the architecture of our generator. We encode each modality into a feature vector which is then aggregated in Global PoE-Net using product-of-experts.
                 The decoder generates the image using the output of Global PoE-Net and skip connections from the segmentation and sketch encoders.</p>
                 <img class="mx-auto d-block" src="images/overview.png" style="width: 100%;margin-bottom: 8px;">
 
                 <p class="caption text-center">Our generator architecture. Check our paper to see more details of the architecture.</p>
+            </div>
+        </div>
+
+        <!-- Discriminator Design -->
+        <div class="row">
+            <div class="col-md-12">
+                <hr style="max-width: 768px;">
+                <h5 class="text-center">Discriminator Design</h5>
+                <p>
+                    We propose a multimodal projection discriminator that generalizes <a href='https://arxiv.org/abs/1802.05637' target='_blank'>projection discriminator</a> to handling multiple conditional inputs.
+                    Unlike the standard projection discriminator that computes a single inner product between the image embedding and the conditional embedding, we compute one inner product per input modality and add them together to obtain the final loss.
+                </p>
+                <img class="mx-auto d-block" src="images/dis.jpg" style="width: 100%;margin-bottom: 8px;">
+
+                <p class="caption text-center">Comparison between the standard projection discriminator (left) and our multimodal projection discriminator (right).</p>
             </div>
         </div>
 
@@ -678,6 +693,7 @@
             <ol class="carousel-indicators hidden">
                 <li data-target="#uncond" data-slide-to="0" class="active"></li>
                 <li data-target="#uncond" data-slide-to="1"></li>
+                <li data-target="#uncond" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -743,18 +759,18 @@
     </div>
 
     <!-- Citation. -->
-    <hr style="max-width: 768px;">
-    <div class="container" style="max-width: 768px;">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Citation</h2>
-            </div>
-        </div>
-        <div class="code-box-copy"  style="font-size: 0.9rem !important; max-width: 768px; margin: 0 auto;">
-            <button class="code-box-copy__btn" data-clipboard-target="#citation" title="Copy" style="opacity: 1;"></button>
-<pre><code class="language-bib" style="font-size: 0.9rem;" id="citation">TODO</code></pre>
-        </div>
-    </div>
+<!--    <hr style="max-width: 768px;">-->
+<!--    <div class="container" style="max-width: 768px;">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-12">-->
+<!--                <h2>Citation</h2>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="code-box-copy"  style="font-size: 0.9rem !important; max-width: 768px; margin: 0 auto;">-->
+<!--            <button class="code-box-copy__btn" data-clipboard-target="#citation" title="Copy" style="opacity: 1;"></button>-->
+<!--<pre><code class="language-bib" style="font-size: 0.9rem;" id="citation">TODO</code></pre>-->
+<!--        </div>-->
+<!--    </div>-->
 
 
     <footer class="text-muted">
